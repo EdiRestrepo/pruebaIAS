@@ -1,0 +1,35 @@
+<h1>Formulario de crear dirección</h1>
+<mat-divider></mat-divider>
+<form [formGroup]="formDirectios" (ngSubmit)="addDiretion()">
+
+  <mat-form-field *ngIf="deparments.length > 0; noDeparments"  class="col-12">
+    <mat-label>Seleccione el departamento</mat-label>
+    <mat-select formControlName="departamentos">
+      <mat-option (click)="getCities(deparment.regionId)" *ngFor="let deparment of deparments"  [value]="deparment.name">{{deparment.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+  <mat-form-field *ngIf="cities.length > 0; else noCities"   class="col-12">
+    <mat-label>Seleccione la Ciudad </mat-label>
+    <mat-select formControlName="cities">
+      <mat-option *ngFor="let city of cities"  [value]="city.name">{{city.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <ng-template #noCities>
+    <h2>No ha seleccionado un departamento</h2>
+  </ng-template>
+
+
+  <mat-form-field *ngIf="cities.length > 0"  class="col-12">
+    <mat-label>Ingrese la direccion </mat-label>
+    <mat-select formControlName="direccion">
+      <mat-option  value="direccion"></mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+
+  <button type="submit" [disabled]="!formDirectios.valid">Submit</button>
+</form>

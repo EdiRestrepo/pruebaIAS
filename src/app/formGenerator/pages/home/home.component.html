@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <span>Generador de Direcciones</span>
+  <div class="pl-5">
+    <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="./fechaentrega">Fecha Entrega</button>
+      <button mat-menu-item routerLink="./direccionentrega">Dirección Entrega</button>
+      <button mat-menu-item routerLink="./form">Formulario </button>
+    </mat-menu>
+  </div>
+  </mat-toolbar>
+  <div class="conntainer p-2">
+    <router-outlet></router-outlet>
+  </div>
